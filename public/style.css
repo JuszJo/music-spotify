@@ -1,0 +1,106 @@
+:root {
+    --spotify-green: #1AB26B;
+    --greyed1: #EBEBEB;
+    --greyed2: #BCBCBC;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    /* font-family: Bree Serif, Arial, Helvetica, sans-serif; */
+    font-family: Futura Md Bt;
+}
+
+body {
+    position: relative;
+}
+
+button {
+    cursor: pointer;
+}
+
+#background-image {
+    background-image: url('/public/spotifyBG.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+#background-overlay {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 25%, rgba(255, 255, 255, 0));
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+}
+
+#body-container {
+    /* box-sizing: border-box; */
+    position: relative;
+    padding: 1.5rem 5rem;
+    z-index: 1;
+}
+
+#nav-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 7rem;
+}
+
+#spotify-logo {
+    width: 10rem;
+}
+
+ul {
+    display: inline;
+}
+
+li {
+    display: inline;
+    cursor: pointer;
+}
+
+.ghost-button {
+    color: var(--greyed1);
+    background-color: transparent;
+    border: 1px solid var(--spotify-green);
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+}
+
+#signup {
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    color: var(--greyed1);
+    padding: 0.5rem 0.6rem;
+    border-radius: 5px;
+    background-color: var(--spotify-green);
+}
+
+h1 {
+    font-size: 5rem;
+    font-weight: normal;
+    color: var(--greyed1);
+    margin-bottom: 2rem;
+}
+
+#premium-highlight {
+    color: var(--spotify-green);
+}
+
+#listen-now {
+    margin-bottom: 2rem;
+}
+
+#quality-sound {
+    color: var(--greyed2);
+}
+
+input[type="submit"] {
+    margin: 1rem;
+}
+
+.artist-img {
+    width: 20rem;
+}
