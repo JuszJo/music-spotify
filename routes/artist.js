@@ -16,6 +16,8 @@ const options = {
 };
 
 let url = new URL('https://spotify23.p.rapidapi.com/search/?q=arianagrande&type=multi&offset=0&limit=10&numberOfTopResults=5');
+let artistOverviewUrl = new URL('https://spotify23.p.rapidapi.com/artist_overview/?id=66CXWjxzNUsdJxJ2JdwvnR');
+
 let params = new URLSearchParams(url.search);
 
 let searchQuery = {
@@ -23,6 +25,14 @@ let searchQuery = {
     set(art) {
         this.artist = art
     }
+}
+
+function getID(uri) {
+    return uri.slice(15)
+}
+
+function setID(url, uri) {
+    url.searchParams.set("id", getID(uri))
 }
 
 function setParam(object) {
@@ -42,7 +52,8 @@ async function getArtist() {
 
         let artistObj = {
             artistName: json.artists.items[0].data.profile.name,
-            visual: json.artists.items[0].data.visuals.avatarImage.sources
+            visual: json.artists.items[0].data.visuals.avatarImage.sources,
+            uri: json.artists.items[0].data.uri
         }
         return artistObj;
         
@@ -51,6 +62,27 @@ async function getArtist() {
     }
 }
 
+async function getArtistOverview() {
+    try {
+        let res = await fetch(artistOverviewUrl, options);
+    
+        if(!res.ok) throw new Error("Something went wrong");
+    
+        let json = await res.json();
+    
+        let artistOverview = {
+            biography: json.data.artist.profile.biography.text
+        }
+    
+        return artistOverview;
+    }
+
+    catch(error) {
+        console.log(error)
+    }
+}
+
+
 router.get('/artist', (req, res) => {
     if(req.session.user) {
         searchQuery.set(req.query.text)
@@ -58,9 +90,15 @@ router.get('/artist', (req, res) => {
 
         let renderData = async () => {
             let artist = await getArtist();
+
+            setID(artistOverviewUrl, artist.uri)
+
+            let overview = await getArtistOverview();
+
             res.render('pages/artist', {
                 img: artist.visual[0].url,
-                artistName: artist.artistName
+                artistName: artist.artistName,
+                biography: overview.biography
             });
         }
         renderData()

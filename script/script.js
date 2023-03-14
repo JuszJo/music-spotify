@@ -1,9 +1,9 @@
-const button = document.querySelector('button');
+// const button = document.querySelector('button');
 
-const fetchOptions = {
-    method: "GET",
+// const fetchOptions = {
+//     method: "GET",
     
-}
+// }
 
 // button.addEventListener('click', e => {
 //     fetch('/artist', fetchOptions)
@@ -17,3 +17,6 @@ const fetchOptions = {
 //         if (err) throw err;
 //     })
 // })
+
+// let me = "spotify:artist:2P5sC9cVZDToPxyomzF1UH";
+// console.log(me.slice(15))
