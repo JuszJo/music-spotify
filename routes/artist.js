@@ -7,6 +7,12 @@ require('dotenv').config()
 
 app.use(express.urlencoded({extended: true}));
 
+//Global Variables
+let url = new URL('https://spotify23.p.rapidapi.com/search/?q=arianagrande&type=multi&offset=0&limit=10&numberOfTopResults=5');
+let artistOverviewUrl = new URL('https://spotify23.p.rapidapi.com/artist_overview/?id=66CXWjxzNUsdJxJ2JdwvnR');
+
+let params = new URLSearchParams(url.search);
+
 const options = {
     method: 'GET',
     headers: {
@@ -14,11 +20,6 @@ const options = {
         'X-RapidAPI-Host': process.env.XRAPIDAPIHOST
     }
 };
-
-let url = new URL('https://spotify23.p.rapidapi.com/search/?q=arianagrande&type=multi&offset=0&limit=10&numberOfTopResults=5');
-let artistOverviewUrl = new URL('https://spotify23.p.rapidapi.com/artist_overview/?id=66CXWjxzNUsdJxJ2JdwvnR');
-
-let params = new URLSearchParams(url.search);
 
 let searchQuery = {
     artist: "xxx",
