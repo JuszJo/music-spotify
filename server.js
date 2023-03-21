@@ -14,6 +14,7 @@ const indexRoute = require('./routes/index');
 const artistRoute = require('./routes/artist');
 const loginRoute = require('./routes/login');
 const welcomeRoute = require('./routes/welcome');
+const logoutRoute = require('./routes/logout');
 
 app.set('view engine', 'ejs');
 
@@ -41,6 +42,8 @@ app.use(artistRoute);
 app.use(loginRoute);
 
 app.use(welcomeRoute);
+
+app.use(logoutRoute);
 
 app.listen(app.get('port'), () => {
     console.log(`http://localhost:${app.get('port')}`);
