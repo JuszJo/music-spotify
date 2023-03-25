@@ -10,11 +10,7 @@ const mongoURI = `mongodb+srv://${process.env.NAME}:${process.env.PASSWD}@cluste
 const client = new MongoClient(mongoURI);
 
 app.use(express.urlencoded({extended: true}));
-
-// let user = new Map()
-
-// user.set("joshua", 1234)
-// user.set("jo", 4321)
+app.use(express.json());
 
 async function getUser(username, password) {
     try {
