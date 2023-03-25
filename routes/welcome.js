@@ -49,13 +49,6 @@ router.post('/welcome', async (req, res) => {
     else {
         res.redirect('/login')
     }
-    // if(user.get(req.body.username) && user.get(req.body.username) == req.body.password) {
-    //     req.session.user = req.body.username;
-    //     res.render('pages/welcome');
-    // }
-    // else {
-    //     res.redirect('/login')
-    // }
 })
 
 router.get('/welcome', (req, res) => {

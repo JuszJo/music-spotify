@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
-router.get('/', (req, res) => {
-    res.render('pages/index', {val: "Joshua", /*expires: req.session.cookie.expires*/});
+router.get('/', (req, res, next) => {
+    res.status(200).render('pages/index', {val: "Joshua"})
 })
 
 module.exports = router;
