@@ -6,6 +6,7 @@ require('dotenv').config()
 //const fs = require('fs');
 
 app.use(express.urlencoded({extended: true}));
+// app.use(express.json())
 
 //Global Variables
 let url = new URL('https://spotify23.p.rapidapi.com/search/?q=arianagrande&type=multi&offset=0&limit=10&numberOfTopResults=5');
