@@ -60,7 +60,7 @@ async function getArtist() {
         return artistObj;
     }
     catch (err) {
-        if(err) throw err;
+        if(err) console.error("Something went wrong!", err);
     }
 }
 
@@ -79,7 +79,7 @@ async function getArtistOverview() {
     }
 
     catch(err) {
-        if(err) throw err;
+        if(err) console.error("Something went wrong!", err);
     }
 }
 
