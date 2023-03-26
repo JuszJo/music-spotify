@@ -1,12 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const fetch = require('node-fetch');
-const app = express();
 require('dotenv').config()
-//const fs = require('fs');
-
-// app.use(express.urlencoded({extended: true}));
-// app.use(express.json())
 
 //Global Variables
 let url = new URL('https://spotify23.p.rapidapi.com/search/?q=arianagrande&type=multi&offset=0&limit=10&numberOfTopResults=5');
@@ -22,24 +17,27 @@ const options = {
     }
 };
 
-let searchQuery = {
-    artist: "xxx",
-    set(art) {
+let artistQuery = {
+    artist: "",
+
+    setArtist(art) {
         this.artist = art
+    },
+
+    setParam() {
+        params.set("q", this.artist);
+        url.search = params; 
     }
 }
 
-function getID(uri) {
-    return uri.slice(15)
-}
+let artistOverview = {
+    getID(uri) {
+        return uri.slice(15)
+    },
 
-function setID(url, uri) {
-    url.searchParams.set("id", getID(uri))
-}
-
-function setParam(object) {
-    params.set("q", object.artist);
-    url.search = params;
+    setID(url, uri) {
+        url.searchParams.set("id", this.getID(uri));
+    }
 }
 
 async function getArtist() {
@@ -52,6 +50,8 @@ async function getArtist() {
 
         let json = await res.json();
 
+        if(json.artists.totalCount == 0) return false;
+
         let artistObj = {
             artistName: json.artists.items[0].data.profile.name,
             visual: json.artists.items[0].data.visuals.avatarImage.sources,
@@ -59,7 +59,7 @@ async function getArtist() {
         }
         return artistObj;
     }
-    catch (err) {
+    catch(err) {
         if(err) console.error("Something went wrong!", err);
     }
 }
@@ -83,24 +83,32 @@ async function getArtistOverview() {
     }
 }
 
-
 router.get('/artist', (req, res) => {
     if(req.session.user) {
-        searchQuery.set(req.query.text)
-        setParam(searchQuery);
+        artistQuery.setArtist(req.query.text)
+        artistQuery.setParam();
 
         let renderData = async () => {
-            let artist = await getArtist();
+            try {
+                let artist = await getArtist();
 
-            setID(artistOverviewUrl, artist.uri)
+                if(!artist) res.redirect('/')
 
-            let overview = await getArtistOverview();
-
-            res.render('pages/artist', {
-                img: artist.visual[0].url,
-                artistName: artist.artistName,
-                biography: overview.biography
-            });
+                else {
+                    artistOverview.setID(artistOverviewUrl, artist.uri)
+    
+                    let overview = await getArtistOverview();
+        
+                    res.render('pages/artist', {
+                        img: artist.visual[0].url,
+                        artistName: artist.artistName,
+                        biography: overview.biography
+                    });
+                }
+            } 
+            catch(err) {
+                if(err) console.error("Something went wrong!", err);
+            }
         }
         renderData()
     }
