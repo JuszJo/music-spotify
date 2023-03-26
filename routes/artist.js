@@ -5,7 +5,7 @@ const app = express();
 require('dotenv').config()
 //const fs = require('fs');
 
-app.use(express.urlencoded({extended: true}));
+// app.use(express.urlencoded({extended: true}));
 // app.use(express.json())
 
 //Global Variables
@@ -58,9 +58,9 @@ async function getArtist() {
             uri: json.artists.items[0].data.uri
         }
         return artistObj;
-        
-    } catch (err) {
-        console.log(err);
+    }
+    catch (err) {
+        if(err) throw err;
     }
 }
 
@@ -75,12 +75,11 @@ async function getArtistOverview() {
         let artistOverview = {
             biography: json.data.artist.profile.biography.text
         }
-    
         return artistOverview;
     }
 
-    catch(error) {
-        console.log(error)
+    catch(err) {
+        if(err) throw err;
     }
 }
 

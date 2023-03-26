@@ -15,7 +15,6 @@ app.use(express.json());
 async function getUser(username, password) {
     try {
         await client.connect();
-
         await client.db("spotify").command({ping: 1})
         console.log("Connected")
 
@@ -23,16 +22,14 @@ async function getUser(username, password) {
             username: username,
         })
 
-        // console.log(result)
-
         if(result.username == username && result.password == password) {
             return true;
         }
-        else {
-            return false;
-        }
-        
+        return false;
     } 
+    catch(err) {
+        if(err) console.error("Something went wrong!", err);
+    }
     finally {
         console.log("Connection Closed")
         await client.close();
@@ -41,13 +38,17 @@ async function getUser(username, password) {
 
 
 router.post('/welcome', async (req, res) => {
-    // console.log(await getUser(req.body.username, req.body.password))
-    if(await getUser(req.body.username, req.body.password)) {
-        req.session.user = req.body.username;
-        res.render('pages/welcome');
+    try {
+        if(await getUser(req.body.username, req.body.password) == true) {
+            req.session.user = req.body.username;
+            res.render('pages/welcome');
+        }
+        else {
+            res.redirect('/login')
+        }
     }
-    else {
-        res.redirect('/login')
+    catch(err) {
+        if(err) console.error("Something went wrong!", err);
     }
 })
 

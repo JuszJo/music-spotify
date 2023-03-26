@@ -8,18 +8,9 @@
     <title>Document</title>
 </head>
 <body>
-    <nav>
-        <form action="/logout" method="get">
-            <button>Log Out</button>
-        </form>
-    </nav>
+    <%- include('../partials/logout.ejs') %>
     <h1>Welcome</h1>
     <%- include('../partials/search.ejs') %>
     <%- //expires %> 
-    <!-- <form action="/artist" method="get">
-        <input type="text" name="text" placeholder="search">
-        <input type="submit" name="submit" value="Get Artist">
-    </form> -->
-    <!-- <script src="/script/script.js"></script> -->
 </body>
 </html>
