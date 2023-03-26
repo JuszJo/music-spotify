@@ -5,7 +5,7 @@ const app = express();
 const router = express.Router();
 
 router.get('/login', (req, res) => {
-    res.status(200).render('pages/login');
+    res.render('pages/login');
 })
 
 module.exports = router;
