@@ -93,7 +93,6 @@ router.get('/artist', (req, res) => {
                 let artist = await getArtist();
 
                 if(!artist) res.redirect('/')
-
                 else {
                     artistOverview.setID(artistOverviewUrl, artist.uri)
     
