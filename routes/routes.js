@@ -4,8 +4,10 @@ const loginRoute = require('./login');
 const welcomeRoute = require('./welcome');
 const logoutRoute = require('./logout');
 
-function useRoutes(app) {
+function useRoutes(app, checkAuth) {
     app.use(indexRoute);
+
+    app.use(checkAuth);
 
     app.use(artistRoute);
 
