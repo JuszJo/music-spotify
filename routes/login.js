@@ -11,8 +11,7 @@ const mongoURI = `mongodb+srv://${process.env.NAME}:${process.env.PASSWD}@cluste
 const client = new MongoClient(mongoURI);
 
 function validateUser(result, password) {
-    if(result == null) return false
-    else if(result.password == password) return true
+    return result.password == password ? true : false;
 }
 
 async function getUser(username, password) {
@@ -20,12 +19,12 @@ async function getUser(username, password) {
         await client.connect();
         await client.db("spotify").command({ping: 1})
         console.log("Connected")
-
+        
         let result = await client.db("spotify").collection("users").findOne({
             username: username,
         })
 
-        return validateUser(result, password);
+        return result == null ? false : validateUser(result, password);
     } 
     catch(err) {
         if(err) console.error("Something went wrong!", err);

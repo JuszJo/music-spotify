@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session');
+const useRoutes = require('./routes/routes')
 const mongoStore = require('connect-mongo');
 require('dotenv').config()
 // const nodemailer = require('nodemailer');
@@ -9,12 +10,6 @@ const app = express();
 const sessionStore = mongoStore.create({
     mongoUrl: `mongodb+srv://${process.env.NAME}:${process.env.PASSWD}@cluster0.xjoqb.mongodb.net/test`,
 })
-
-const indexRoute = require('./routes/index');
-const artistRoute = require('./routes/artist');
-const loginRoute = require('./routes/login');
-const welcomeRoute = require('./routes/welcome');
-const logoutRoute = require('./routes/logout');
 
 app.set('view engine', 'ejs');
 
@@ -35,15 +30,7 @@ app.use(session({
     store: sessionStore
 }));
 
-app.use(indexRoute);
-
-app.use(artistRoute);
-
-app.use(loginRoute);
-
-app.use(welcomeRoute);
-
-app.use(logoutRoute);
+useRoutes(app);
 
 app.listen(app.get('port'), () => {
     console.log(`http://localhost:${app.get('port')}`);
