@@ -3,12 +3,6 @@ const router = express.Router();
 const fetch = require('node-fetch');
 require('dotenv').config()
 
-//Global Variables
-let url = new URL('https://spotify23.p.rapidapi.com/search/?q=arianagrande&type=multi&offset=0&limit=10&numberOfTopResults=5');
-let artistOverviewUrl = new URL('https://spotify23.p.rapidapi.com/artist_overview/?id=66CXWjxzNUsdJxJ2JdwvnR');
-
-let params = new URLSearchParams(url.search);
-
 const options = {
     method: 'GET',
     headers: {
@@ -16,6 +10,10 @@ const options = {
         'X-RapidAPI-Host': process.env.XRAPIDAPIHOST
     }
 };
+
+//Global Variables
+let url = new URL('https://spotify23.p.rapidapi.com/search/?q=arianagrande&type=multi&offset=0&limit=10&numberOfTopResults=5');
+let artistOverviewUrl = new URL('https://spotify23.p.rapidapi.com/artist_overview/?id=66CXWjxzNUsdJxJ2JdwvnR');
 
 let artistQuery = {
     artist: "",
@@ -25,8 +23,8 @@ let artistQuery = {
     },
 
     setParam() {
-        params.set("q", this.artist);
-        url.search = params; 
+        url.searchParams.set("q", this.artist);
+        url.search = url.searchParams;
     }
 }
 
@@ -44,9 +42,7 @@ async function getArtist() {
     try {
         let res = await fetch(url, options);
 
-        if(!res.ok) {
-            throw new Error("Something went wrong");
-        }
+        if(!res.ok) throw new Error("Something went wrong");
 
         let json = await res.json();
 
@@ -85,17 +81,16 @@ async function getArtistOverview() {
 
 router.get('/artist', (req, res) => {
     if(req.session.user) {
-        artistQuery.setArtist(req.query.text)
+        artistQuery.setArtist(req.query.text);
         artistQuery.setParam();
 
         let renderData = async () => {
             try {
                 let artist = await getArtist();
 
-                if(!artist) res.redirect('/')
+                if(!artist) res.redirect('/');
                 else {
-                    artistOverview.setID(artistOverviewUrl, artist.uri)
-    
+                    artistOverview.setID(artistOverviewUrl, artist.uri);
                     let overview = await getArtistOverview();
         
                     res.render('pages/artist', {
