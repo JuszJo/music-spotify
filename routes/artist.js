@@ -80,35 +80,31 @@ async function getArtistOverview() {
 }
 
 router.get('/artist', (req, res) => {
-    if(req.session.user) {
-        artistQuery.setArtist(req.query.text);
-        artistQuery.setParam();
+    artistQuery.setArtist(req.query.text);
+    artistQuery.setParam();
 
-        let renderData = async () => {
-            try {
-                let artist = await getArtist();
+    let renderData = async () => {
+        try {
+            let artist = await getArtist();
 
-                if(!artist) res.redirect('/');
-                else {
-                    artistOverview.setID(artistOverviewUrl, artist.uri);
-                    let overview = await getArtistOverview();
-        
-                    res.render('pages/artist', {
-                        img: artist.visual[0].url,
-                        artistName: artist.artistName,
-                        biography: overview.biography
-                    });
-                }
-            } 
-            catch(err) {
-                if(err) console.error("Something went wrong!", err);
+            if(!artist) res.redirect('/welcome');
+            else {
+                artistOverview.setID(artistOverviewUrl, artist.uri);
+                let overview = await getArtistOverview();
+    
+                res.render('pages/artist', {
+                    img: artist.visual[0].url,
+                    artistName: artist.artistName,
+                    biography: overview.biography
+                });
             }
+        } 
+        catch(err) {
+            if(err) console.error("Something went wrong!", err);
         }
-        renderData()
     }
-    else {
-        res.redirect('/login');
-    }
+
+    renderData();
 })
 
 module.exports = router;

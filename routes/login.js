@@ -43,7 +43,7 @@ router.post('/login', async (req, res) => {
     try {
         if(await getUser(req.body.username, req.body.password) == true) {
             req.session.user = req.body.username;
-            res.render('pages/welcome');
+            res.redirect('/welcome')
         }
         else {
             res.redirect('/login')
