@@ -1,10 +1,5 @@
 const express = require('express');
 const {MongoClient} = require('mongodb')
-const app = express();
-
-app.use(express.urlencoded({extended: true}));
-app.use(express.json());
-
 const router = express.Router();
 
 const mongoURI = `mongodb+srv://${process.env.NAME}:${process.env.PASSWD}@cluster0.xjoqb.mongodb.net`
