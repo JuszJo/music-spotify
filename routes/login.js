@@ -34,7 +34,7 @@ router.get('/login', (req, res) => {
     res.render('pages/login');
 })
 
-router.post('/login', async (req, res) => {
+router.post('/login', async (req, res, next) => {
     try {
         if(await getUser(req.body.username, req.body.password) == true) {
             req.session.user = req.body.username;
@@ -46,6 +46,7 @@ router.post('/login', async (req, res) => {
     }
     catch(err) {
         if(err) console.error("Something went wrong!", err);
+        next();
     }
 })
 

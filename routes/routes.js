@@ -16,6 +16,13 @@ function useRoutes(app, checkAuth) {
     app.use(welcomeRoute);
 
     app.use(logoutRoute);
+
+    //500 error handler
+    app.use((err, req, res, next) => {
+        console.error(err.stack);
+
+        res.status(500).send('500 - Internal Server Error');
+    });
 }
 
 module.exports = useRoutes;
