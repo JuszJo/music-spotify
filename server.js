@@ -12,7 +12,6 @@ const sessionStore = mongoStore.create({
 })
 
 function checkAuth(req, res, next) {
-    console.log(req.path);
     if(req.session.user || req.path == '/login') {
         next();
     }
