@@ -5,7 +5,7 @@ exports.loginHandler = async (req, res, next) => {
         if(!(await authService.getUser(req.body.username, req.body.password))) res.redirect('/login')
         else {
             req.session.user = req.body.username;
-            res.redirect('/welcome')
+            res.redirect('/auth/welcome')
         }
     }
     catch(err) {
