@@ -1,5 +1,6 @@
-const fetch = require('node-fetch');
-require('dotenv').config();
+import fetch from 'node-fetch';
+import { config } from "dotenv";
+config();
 
 const options = {
     method: 'GET',
@@ -97,7 +98,7 @@ async function getData(req) {
     }
 }
 
-exports.get = async (req, res, next) => {
+export async function get(req, res, next) {
     try {
         const data = await getData(req);
         res.render('pages/artist', {

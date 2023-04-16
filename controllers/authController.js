@@ -1,8 +1,8 @@
-const authService = require('../services/auth.service');
+import { getUser } from '../services/auth.service.js';
 
-exports.loginHandler = async (req, res, next) => {
+export async function loginHandler(req, res, next) {
     try {
-        if(!(await authService.getUser(req.body.username, req.body.password))) res.redirect('/login')
+        if(!(await getUser(req.body.username, req.body.password))) res.redirect('/login')
         else {
             req.session.user = req.body.username;
             res.redirect('/auth/welcome')

@@ -1,8 +1,8 @@
-const indexRoute = require('./index');
-const artistRoute = require('./artist');
-const loginRoute = require('./login');
-const welcomeRoute = require('./welcome');
-const logoutRoute = require('./logout');
+import indexRoute from './index.js';
+import artistRoute from './artist.js';
+import loginRoute from './login.js';
+import welcomeRoute from './welcome.js';
+import logoutRoute from './logout.js';
 
 function useRoutes(app, checkAuth) {
     app.use(indexRoute);
@@ -30,4 +30,4 @@ function useRoutes(app, checkAuth) {
     });
 }
 
-module.exports = useRoutes;
+export default useRoutes;

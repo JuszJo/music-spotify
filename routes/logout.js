@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+import { Router } from 'express';
+const router = Router();
 
 router.get('/logout', (req, res) => {
     req.session.destroy(err => {
@@ -9,4 +9,4 @@ router.get('/logout', (req, res) => {
 })
 
 
-module.exports = router;
+export default router;

@@ -1,4 +1,4 @@
-const {MongoClient} = require('mongodb')
+import { MongoClient } from 'mongodb';
 
 const mongoURI = `mongodb+srv://${process.env.NAME}:${process.env.PASSWD}@cluster0.xjoqb.mongodb.net`
 const client = new MongoClient(mongoURI);
@@ -7,7 +7,7 @@ function validateUser(result, password) {
     return result.password == password ? true : false;
 }
 
-exports.getUser = async (username, password) => {
+export async function getUser(username, password) {
     try {
         await client.connect();
         await client.db("spotify").command({ping: 1})
