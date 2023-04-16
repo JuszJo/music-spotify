@@ -51,10 +51,11 @@ async function getArtist() {
             visual: json.artists.items[0].data.visuals.avatarImage.sources,
             uri: json.artists.items[0].data.uri
         }
+
         return artistObj;
     }
     catch(err) {
-        if(err) console.error("Something went wrong!", err);
+        if(err) throw err;
     }
 }
 
@@ -69,39 +70,43 @@ async function getArtistOverview() {
         let artistOverview = {
             biography: json.data.artist.profile.biography.text
         }
+
         return artistOverview;
     }
     
     catch(err) {
-        if(err) console.error("Something went wrong!", err);
+        if(err) throw err;
     }
 }
 
-exports.get = async (req, res) => {
+async function getData(req) {
     artistQuery.setArtist(req.query.text);
     artistQuery.setParam();
 
-    let renderData = async () => {
-        try {
-            let artist = await getArtist();
+    try {
+        const artist = await getArtist();
 
-            if(!artist) res.redirect('/welcome');
-            else {
-                artistOverview.setID(artistOverviewUrl, artist.uri);
-                let overview = await getArtistOverview();
-    
-                res.render('pages/artist', {
-                    img: artist.visual[0].url,
-                    artistName: artist.artistName,
-                    biography: overview.biography
-                });
-            }
-        } 
-        catch(err) {
-            if(err) console.error("Something went wrong!", err);
-            res.send("Error");
-        }
+        artistOverview.setID(artistOverviewUrl, artist.uri);
+
+        const overview = await getArtistOverview();
+
+        return {artist, overview}
     }
+    catch(err) {
+        if(err) throw err;
+    }
+}
 
-    renderData();
+exports.get = async (req, res, next) => {
+    try {
+        const data = await getData(req);
+        res.render('pages/artist', {
+            img: data.artist.visual[0].url,
+            artistName: data.artist.artistName,
+            biography: data.overview.biography
+        })
+    }
+    catch(err) {
+        next(err)
+    }
 }
