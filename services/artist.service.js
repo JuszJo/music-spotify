@@ -1,18 +1,12 @@
 import fetch from 'node-fetch';
-import { config } from "dotenv";
-config();
+import { config } from '../config/spotify.config.js';
+import dotenv from "dotenv";
+dotenv.config();
 
-const options = {
-    method: 'GET',
-    headers: {
-        'X-RapidAPI-Key': process.env.XRAPIDAPIKEY,
-        'X-RapidAPI-Host': process.env.XRAPIDAPIHOST
-    }
-};
+const options = config.options;
 
-//Global Variables
-let url = new URL('https://spotify23.p.rapidapi.com/search/?q=arianagrande&type=multi&offset=0&limit=10&numberOfTopResults=5');
-let artistOverviewUrl = new URL('https://spotify23.p.rapidapi.com/artist_overview/?id=66CXWjxzNUsdJxJ2JdwvnR');
+let url = config.url;
+let artistOverviewUrl = config.artistOverviewUrl;
 
 let artistQuery = {
     artist: "",
