@@ -5,9 +5,9 @@ import MongoStore from 'connect-mongo';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url))
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
-dotenv.config()
+dotenv.config();
 
 const app = express();
 

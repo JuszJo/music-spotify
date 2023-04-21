@@ -18,7 +18,7 @@ let artistQuery = {
     artist: "",
 
     setArtist(art) {
-        this.artist = art
+        this.artist = art;
     },
 
     setParam() {
@@ -29,7 +29,7 @@ let artistQuery = {
 
 let artistOverview = {
     getID(uri) {
-        return uri.slice(15)
+        return uri.slice(15);
     },
 
     setID(url, uri) {
