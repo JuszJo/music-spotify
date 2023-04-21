@@ -15,13 +15,6 @@ const sessionStore = MongoStore.create({
     mongoUrl: `mongodb+srv://${process.env.NAME}:${process.env.PASSWD}@cluster0.xjoqb.mongodb.net/test`,
 })
 
-function checkAuth(req, res, next) {
-    if(req.session.user || req.path == '/login') {
-        next();
-    }
-    else res.redirect("/login");
-}
-
 app.set('view engine', 'ejs');
 
 app.set('port', process.env.PORTNAME || 5000);
@@ -41,7 +34,7 @@ app.use(session({
     store: sessionStore
 }));
 
-useRoutes(app, checkAuth);
+useRoutes(app);
 
 app.listen(app.get('port'), () => {
     console.log(`http://localhost:${app.get('port')}`);
