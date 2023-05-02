@@ -1,4 +1,5 @@
 import getData from "../services/artist.service.js";
+import makeParagraph from "../utils/makeParagraph.utils.js";
 
 export async function artistHandler(req, res, next) {
     try {
@@ -6,7 +7,8 @@ export async function artistHandler(req, res, next) {
         res.render('pages/artist', {
             img: data.artist.visual[0].url,
             artistName: data.artist.artistName,
-            biography: data.overview.biography
+            biography: data.overview.biography,
+            func: makeParagraph
         })
     }
     catch(err) {

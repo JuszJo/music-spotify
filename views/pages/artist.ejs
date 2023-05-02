@@ -15,10 +15,13 @@
         <%- include('../partials/logout.ejs') %>
     </header>
     <main>
+        <% let arr = func(biography, 5) %>
         <h2><%- artistName %> </h2>
         <%- include('../partials/search.ejs') %>
         <img src="<%- img %> " class="artist-img" alt="artist">
-        <p><%- biography %> </p>
+        <% for(let i = 0; i < arr.length; ++i) { %>
+            <p><%- arr[i] %> </p>
+        <% } %>
     </main>
     <footer></footer>
 </body>
