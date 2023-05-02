@@ -1,6 +1,6 @@
 import getData from "../services/artist.service.js";
 
-export async function get(req, res, next) {
+export async function artistHandler(req, res, next) {
     try {
         const data = await getData(req);
         res.render('pages/artist', {

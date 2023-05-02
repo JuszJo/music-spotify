@@ -74,9 +74,13 @@ async function getArtistOverview() {
     }
 }
 
-export default async function getData(req) {
-    artistQuery.setArtist(req.query.text);
+function setQuery(request) {
+    artistQuery.setArtist(request.query.text);
     artistQuery.setParam();
+}
+
+export default async function getData(req) {
+    setQuery(req);
 
     try {
         const artist = await getArtist();

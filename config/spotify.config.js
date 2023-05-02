@@ -11,6 +11,5 @@ export const config = {
     },
 
     url: new URL('https://spotify23.p.rapidapi.com/search/?q=arianagrande&type=multi&offset=0&limit=10&numberOfTopResults=5'),
-
     artistOverviewUrl: new URL('https://spotify23.p.rapidapi.com/artist_overview/?id=66CXWjxzNUsdJxJ2JdwvnR'),
 }

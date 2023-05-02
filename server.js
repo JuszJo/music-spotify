@@ -12,7 +12,7 @@ app.use('/public', express.static('./public'))
 
 app.use(urlencoded({extended: true}));
 
-app.use(sessionMiddleware)
+app.use(sessionMiddleware);
 
 useRoutes(app);
 
