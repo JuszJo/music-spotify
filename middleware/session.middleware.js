@@ -1,10 +1,9 @@
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
-import dotenv from 'dotenv';
-dotenv.config();
+import databaseConfig from '../config/mongo.config.js';
 
 const sessionStore = MongoStore.create({
-    mongoUrl: `mongodb+srv://${process.env.NAME}:${process.env.PASSWD}@cluster0.xjoqb.mongodb.net/test`,
+    mongoUrl: databaseConfig.url
 })
 
 export default session({

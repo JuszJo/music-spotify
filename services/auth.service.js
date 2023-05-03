@@ -1,6 +1,8 @@
 import { MongoClient } from 'mongodb';
+import databaseConfig from '../config/mongo.config.js';
 
-const mongoURI = `mongodb+srv://${process.env.NAME}:${process.env.PASSWD}@cluster0.xjoqb.mongodb.net`
+const mongoURI = databaseConfig.url;
+
 const client = new MongoClient(mongoURI);
 
 function validateUser(result, password) {
