@@ -42,9 +42,9 @@ async function getArtist() {
         if(json.artists.totalCount == 0) return false;
     
         let artistObj = {
-            artistName: json.artists.items[0].data.profile.name,
-            visual: json.artists.items[0].data.visuals.avatarImage.sources,
-            uri: json.artists.items[0].data.uri
+            artistName: (json?.artists?.items[0]?.data?.profile?.name == null ? "" : json?.artists?.items[0]?.data?.profile?.name),
+            visual: (json?.artists?.items[0]?.data?.visuals?.avatarImage?.sources == null ? [""] : json?.artists?.items[0]?.data?.visuals?.avatarImage?.sources),
+            uri: (json?.artists?.items[0]?.data?.uri == null ? "" : json?.artists?.items[0]?.data?.uri)
         }
 
         return artistObj;
@@ -63,7 +63,7 @@ async function getArtistOverview() {
         let json = await res.json();
     
         let artistOverview = {
-            biography: json.data.artist.profile.biography.text
+            biography: (json?.data?.artist?.profile?.biography?.text == null ? "" : json?.data?.artist?.profile?.biography?.text)
         }
 
         return artistOverview;

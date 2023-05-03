@@ -22,7 +22,7 @@ export async function getUser(username, password) {
         return result == null ? false : validateUser(result, password);
     } 
     catch(err) {
-        if(err) console.error("Something went wrong!", err);
+        if(err) throw err;
     }
     finally {
         console.log("Connection Closed");

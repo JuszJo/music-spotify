@@ -3,11 +3,12 @@ import makeParagraph from "../utils/makeParagraph.utils.js";
 
 export async function artistHandler(req, res, next) {
     try {
-        const data = await getData(req);
+        const {artist, overview} = await getData(req);
+    
         res.render('pages/artist', {
-            img: data.artist.visual[0].url,
-            artistName: data.artist.artistName,
-            biography: data.overview.biography,
+            img: artist?.visual[0]?.url,
+            artistName: artist.artistName,
+            biography: overview.biography,
             func: makeParagraph
         })
     }
