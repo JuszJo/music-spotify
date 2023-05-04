@@ -8,15 +8,15 @@ import { checkAuth } from '../middleware/auth.middleware.js';
 function useRoutes(app) {
     app.use(indexRoute);
 
-    app.use(loginRoute);
+    // app.use(loginRoute);
     
-    app.use('/auth', checkAuth);
+    // app.use('/auth', checkAuth);
     
     app.use('/auth', welcomeRoute);
     
     app.use('/auth', artistRoute);
 
-    app.use(logoutRoute);
+    // app.use(logoutRoute);
 
     //400 error handler
     app.use((req, res) => {

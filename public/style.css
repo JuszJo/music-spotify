@@ -15,6 +15,16 @@ button {
     cursor: pointer;
 }
 
+.container {
+    max-width: 1400px;
+    margin: auto;
+}
+
+.container-2 {
+    max-width: 1200px;
+    margin: auto;
+}
+
 #background-image {
     background-image: url('/public/spotifyBG.jpg');
     background-size: cover;

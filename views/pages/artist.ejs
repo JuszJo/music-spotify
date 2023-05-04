@@ -10,28 +10,33 @@
     <title>Spotify Jo</title>
 </head>
 <body>
-    <header>
+    <header class="container">
         <ul>
-            <li><a href="/auth/welcome">Welcome</a></li>
+            <img src="../../public/Spotify_Logo_CMYK_Green.png">
         </ul>
-        <%- include('../partials/logout.ejs') %>
+        <div>
+            <%- include('../partials/search.ejs') %>
+        </div>
+        <div>
+            <%- include('../partials/logout.ejs') %>
+        </div>
     </header>
     <main>
-        <h2 id="artist-name"><%- artistName %> </h2>
-        <%- include('../partials/search.ejs') %>
-        <section id="artist-img-section">
-            <div id="monthly-listeners-div">
-                <h2>10,000,000</h2>
-                <h3 id="monthly-listeners">Monthly Listeners</h3>
-            </div>
-            <img src="<%- img %> " class="artist-img" alt="artist">
-            <div id="followers-div">
-                <h2>1,000,000</h2>
-                <h3 id="followers">Followers</h3>
-            </div>
-        </section>
-        <p class="bio"><%- biography  %> </p>
-        
+        <div class="container">
+            <h2 id="artist-name"><%- artistName %> </h2>
+            <section id="artist-img-section" class="container-2">
+                <div id="monthly-listeners-div">
+                    <h2>10,000,000</h2>
+                    <h3 id="monthly-listeners">Monthly Listeners</h3>
+                </div>
+                <img src="<%- img %> " class="artist-img" alt="artist">
+                <div id="followers-div">
+                    <h2>1,000,000</h2>
+                    <h3 id="followers">Followers</h3>
+                </div>
+            </section>
+            <p class="bio"><%- biography  %> </p>
+        </div>
     </main>
     <footer></footer>
 </body>

@@ -10,7 +10,12 @@ body {
 header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-top: 1rem;
+}
+
+header img {
+    width: 8rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -36,23 +41,27 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5rem;
+    /* gap: 10rem; */
+    gap: 2rem;
+}
+
+#artist-img-section h2{
+    color: var(--spotify-green);
+    font-size: 2rem;
+}
+
+#artist-img-section h3{
+    color: var(--greyed1);
 }
 
 #monthly-listeners-div {
     text-align: center;
-}
-
-#monthly-listeners-div h2 {
-    color: var(--spotify-green);
+    flex-grow: 1;
 }
 
 #followers-div {
     text-align: center;
-}
-
-#followers-div h2 {
-    color: var(--spotify-green);
+    flex-grow: 1;
 }
 
 .artist-img {
@@ -65,4 +74,5 @@ p {
     max-width: 65rem;
     margin: auto;
     margin-top: 2rem;
+    text-align: center;
 }
