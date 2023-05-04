@@ -1,5 +1,4 @@
 import getData from "../services/artist.service.js";
-import makeParagraph from "../utils/makeParagraph.utils.js";
 
 export async function artistHandler(req, res, next) {
     try {
@@ -9,7 +8,8 @@ export async function artistHandler(req, res, next) {
             img: artist?.visual[0]?.url,
             artistName: artist.artistName,
             biography: overview.biography,
-            func: makeParagraph
+            monthlyCount: overview.monthlyCount,
+            followerCount: overview.followerCount,
         })
     }
     catch(err) {

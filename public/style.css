@@ -113,3 +113,7 @@ h1 {
 input[type="submit"] {
     margin: 1rem;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}

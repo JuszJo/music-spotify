@@ -63,7 +63,9 @@ async function getArtistOverview() {
         let json = await res.json();
     
         let artistOverview = {
-            biography: (json?.data?.artist?.profile?.biography?.text == null ? "" : json?.data?.artist?.profile?.biography?.text)
+            biography: (json?.data?.artist?.profile?.biography?.text == null ? "" : json?.data?.artist?.profile?.biography?.text),
+            monthlyCount: (json?.data?.artist?.stats?.monthlyListeners == null ? "Not Available" : json?.data?.artist?.stats?.monthlyListeners.toLocaleString()),
+            followerCount: (json?.data?.artist?.stats?.followers == null ? "Not Available" : json?.data?.artist?.stats?.followers.toLocaleString())
         }
 
         return artistOverview;
