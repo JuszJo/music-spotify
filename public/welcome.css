@@ -25,6 +25,20 @@ h1 {
     padding-top: 1rem;
 }
 
+#welcome-section {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#welcome-div {
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
 #welcome-div h1 {
     text-align: center;
 }

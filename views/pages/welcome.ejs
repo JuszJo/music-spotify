@@ -11,17 +11,17 @@
 </head>
 <body>
     <main>
+        <header id="welcome-header" class="container">
+            <nav>
+                <ul>
+                    <img src="/public/images/Spotify_Logo_CMYK_Green.png">
+                </ul>
+                <div>
+                    <%- include('../partials/logout.ejs') %>
+                </div>
+            </nav>
+        </header>
         <section id="welcome-section" class="container">
-            <header id="welcome-header">
-                <nav>
-                    <ul>
-                        <img src="/public/images/Spotify_Logo_CMYK_Green.png">
-                    </ul>
-                    <div>
-                        <%- include('../partials/logout.ejs') %>
-                    </div>
-                </nav>
-            </header>
             <div id="welcome-div">
                 <h1>Search for your Favourite Artist</h1>
                 <div id="prototype-container">
