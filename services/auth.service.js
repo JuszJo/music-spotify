@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+/* import { MongoClient } from 'mongodb';
 import databaseConfig from '../config/mongo.config.js';
 
 const mongoURI = databaseConfig.url;
@@ -28,4 +28,4 @@ export async function getUser(username, password) {
         console.log("Connection Closed");
         await client.close();
     }
-}
+} */

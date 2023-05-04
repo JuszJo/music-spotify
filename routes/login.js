@@ -1,4 +1,4 @@
-import { Router } from 'express';
+/* import { Router } from 'express';
 const router = Router();
 import { loginHandler } from '../controllers/authController.js';
 
@@ -8,4 +8,4 @@ router.get('/login', (req, res) => {
 
 router.post('/login', loginHandler)
 
-export default router;
+export default router; */

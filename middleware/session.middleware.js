@@ -1,4 +1,4 @@
-import session from 'express-session';
+/* import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import databaseConfig from '../config/mongo.config.js';
 
@@ -15,4 +15,4 @@ export default session({
         maxAge: (1000 * 60 * 60)
     },
     store: sessionStore
-})
+}) */

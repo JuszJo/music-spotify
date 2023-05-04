@@ -1,4 +1,4 @@
-import { getUser } from '../services/auth.service.js';
+/* import { getUser } from '../services/auth.service.js';
 
 export async function loginHandler(req, res, next) {
     try {
@@ -11,4 +11,4 @@ export async function loginHandler(req, res, next) {
     catch(err) {
         if(err) next(err);
     }
-}
+} */

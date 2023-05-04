@@ -1,9 +1,9 @@
 import indexRoute from './index.js';
 import artistRoute from './artist.js';
-import loginRoute from './login.js';
+/* import loginRoute from './login.js'; */
 import welcomeRoute from './welcome.js';
-import logoutRoute from './logout.js';
-import { checkAuth } from '../middleware/auth.middleware.js';
+/* import logoutRoute from './logout.js';
+import { checkAuth } from '../middleware/auth.middleware.js'; */
 
 function useRoutes(app) {
     app.use(indexRoute);
