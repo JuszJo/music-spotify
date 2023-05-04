@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/style.css">
+    <link rel="stylesheet" href="/public/search.css">
+    <link rel="stylesheet" href="/public/artist.css">
     <title>Spotify Jo</title>
 </head>
 <body>
@@ -15,13 +17,21 @@
         <%- include('../partials/logout.ejs') %>
     </header>
     <main>
-        <% let arr = func(biography) %>
-        <h2><%- artistName %> </h2>
+        <h2 id="artist-name"><%- artistName %> </h2>
         <%- include('../partials/search.ejs') %>
-        <img src="<%- img %> " class="artist-img" alt="artist">
-        <% for(let i = 0; i < arr.length; ++i) { %>
-            <p class="bio"><%- arr[i] %> </p>
-        <% } %>
+        <section id="artist-img-section">
+            <div id="monthly-listeners-div">
+                <h2>10,000,000</h2>
+                <h3 id="monthly-listeners">Monthly Listeners</h3>
+            </div>
+            <img src="<%- img %> " class="artist-img" alt="artist">
+            <div id="followers-div">
+                <h2>1,000,000</h2>
+                <h3 id="followers">Followers</h3>
+            </div>
+        </section>
+        <p class="bio"><%- biography  %> </p>
+        
     </main>
     <footer></footer>
 </body>

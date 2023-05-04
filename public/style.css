@@ -4,15 +4,11 @@
     --greyed2: #BCBCBC;
 }
 
-* {
+body {
+    font-family: Futura Md Bt;
+    position: relative;
     margin: 0;
     padding: 0;
-    /* font-family: Bree Serif, Arial, Helvetica, sans-serif; */
-    font-family: Futura Md Bt;
-}
-
-body {
-    position: relative;
 }
 
 button {
@@ -106,8 +102,4 @@ h1 {
 
 input[type="submit"] {
     margin: 1rem;
-}
-
-.artist-img {
-    width: 20rem;
 }
