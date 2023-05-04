@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul img {
+    width: 8rem;
+}
+
+main {
+    background-color: #181818;
+}
+
+#welcome-header nav {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+}
+
+#welcome-div {
+    height: 100vh;
+}
+
+#welcome-div h1 {
+    text-align: center;
+}

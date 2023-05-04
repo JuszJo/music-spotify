@@ -5,10 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/style.css">
+    <link rel="stylesheet" href="/public/welcome.css">
+    <link rel="stylesheet" href="/public/search.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome to Spotify Api App</h1>
-    <%- include('../partials/search.ejs') %>
+    <main>
+        <section id="welcome-section" class="container">
+            <header id="welcome-header">
+                <nav>
+                    <ul>
+                        <img src="../../public/Spotify_Logo_CMYK_Green.png">
+                    </ul>
+                    <div>
+                        <%- include('../partials/logout.ejs') %>
+                    </div>
+                </nav>
+            </header>
+            <div id="welcome-div">
+                <h1>Welcome to Spotify Api App</h1>
+                <%- include('../partials/search.ejs') %>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
