@@ -15,7 +15,7 @@
             <header id="welcome-header">
                 <nav>
                     <ul>
-                        <img src="../../public/Spotify_Logo_CMYK_Green.png">
+                        <img src="/public/images/Spotify_Logo_CMYK_Green.png">
                     </ul>
                     <div>
                         <%- include('../partials/logout.ejs') %>
@@ -23,7 +23,12 @@
                 </nav>
             </header>
             <div id="welcome-div">
-                <h1>Welcome to Spotify Api App</h1>
+                <h1>Search for your Favourite Artist</h1>
+                <div id="prototype-container">
+                    <div id="prototype-div">
+                        <img src="/public/images/prototype.png" alt="Prototype of Web App">
+                    </div>
+                </div>
                 <%- include('../partials/search.ejs') %>
             </div>
         </section>

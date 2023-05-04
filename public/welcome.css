@@ -9,18 +9,43 @@ ul img {
 
 main {
     background-color: #181818;
+    height: 100vh;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
 }
 
 #welcome-header nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-top: 1rem;
-}
-
-#welcome-div {
-    height: 100vh;
 }
 
 #welcome-div h1 {
     text-align: center;
+}
+
+#prototype-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 1.5rem;
+}
+
+#prototype-div {
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+}
+
+#prototype-div img{
+    width: 70%;
+    box-shadow: 0px 0px 50px -20px var(--spotify-green);
+}
+
+#search-form {
+    padding: 1.5rem;
 }
