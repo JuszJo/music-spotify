@@ -1,5 +1,6 @@
 export default function makeParagraph(text) {
-    let points = text.length / 5;   
+    let maxWords = 1000;
+    let points = text.length / maxWords < 1 ? text.length : maxWords;
     let array = [];
 
     for(let i = 0; i < text.length; i += points) array.push(String(text).slice(i, i + points))
