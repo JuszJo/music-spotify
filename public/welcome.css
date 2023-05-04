@@ -51,6 +51,7 @@ h1 {
 
 #prototype-div {
     max-width: 1000px;
+    height: 400px;
     margin: auto;
     text-align: center;
 }
