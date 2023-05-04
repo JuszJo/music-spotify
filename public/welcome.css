@@ -26,9 +26,11 @@ h1 {
 }
 
 #welcome-section {
+    position: relative;
     height: 90vh;
     display: flex;
     flex-direction: column;
+
 }
 
 #welcome-div {

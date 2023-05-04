@@ -41,7 +41,6 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* gap: 10rem; */
     gap: 2rem;
 }
 
@@ -75,4 +74,5 @@ p {
     margin: auto;
     margin-top: 2rem;
     text-align: center;
+    line-height: 1.5;
 }
