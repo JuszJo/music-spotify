@@ -17,7 +17,6 @@ let artistQuery = {
 
     setParam() {
         url.searchParams.set("q", this.artist);
-        url.search = url.searchParams;
     }
 }
 
