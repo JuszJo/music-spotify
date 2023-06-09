@@ -117,3 +117,9 @@ input[type="submit"] {
 ::-webkit-scrollbar {
     display: none;
 }
+
+@media (max-width: 1400px) {
+    .container {
+        max-width: 90%;
+    }
+}

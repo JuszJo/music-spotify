@@ -27,3 +27,30 @@
     background-color: var(--spotify-green);
     border: none;
 }
+
+@media (max-width: 500px) {
+    #search-text {
+        width: 17rem;
+    }
+}
+
+@media (max-width: 400px) {
+    #search-text {
+        width: 15rem;
+    }
+
+    #search-div {
+        margin-top: 0.75rem;
+        flex-direction: column;
+    }
+
+    #search-artist-button {
+        background-color: transparent;
+        border: 1px solid var(--spotify-green);
+    }
+
+    #search-artist-button:hover {
+        background-color: var(--spotify-green);
+        border: 1px solid transparent;
+    }
+}

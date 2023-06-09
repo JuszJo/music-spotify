@@ -76,3 +76,22 @@ p {
     text-align: center;
     line-height: 1.5;
 }
+
+@media (max-width: 780px) {
+    #artist-img-section {
+        margin-top: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 750px) {
+    #logout-artist {
+        display: none;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
