@@ -121,6 +121,7 @@ input[type="submit"] {
 @media (max-width: 1400px) {
     .container {
         max-width: 90%;
+        margin: auto;
     }
 
     #container {
